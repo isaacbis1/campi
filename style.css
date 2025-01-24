@@ -1,0 +1,444 @@
+/* Reset di base */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Import del font Poppins per una tipografia moderna */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+/* Variabili CSS per la palette di colori estivi */
+:root {
+  --color-primary: #FF8C00; /* Arancione scuro */
+  --color-secondary: #FFD700; /* Giallo oro */
+  --color-accent: #FF4500; /* Arancione rosso */
+  --color-bg: #FFF8E1; /* Crema chiaro */
+  --color-text: #333333; /* Grigio scuro per il testo */
+  --color-white: #FFFFFF;
+  --color-overlay: rgba(255, 255, 255, 0.1);
+}
+
+/* Stile Body */
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(135deg, var(--color-bg) 0%, var(--color-secondary) 100%);
+  color: var(--color-text);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  transition: background 0.3s ease;
+}
+
+/* Header */
+header {
+  background: var(--color-primary);
+  color: var(--color-white);
+  text-align: center;
+  padding: 20px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+header h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.logout {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  text-decoration: none;
+  color: var(--color-white);
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.logout:hover {
+  color: var(--color-secondary);
+}
+
+/* Main */
+main {
+  flex: 1;
+  padding: 30px 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* Sezione Login */
+#login-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.8);
+  padding: 40px 30px;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#login-area:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 24px rgba(0,0,0,0.2);
+}
+
+#login-area h1 {
+  color: var(--color-primary);
+  margin-bottom: 15px;
+  font-size: 2.5rem;
+}
+
+#login-area .tommi {
+  margin-bottom: 20px;
+  font-weight: 600;
+  font-size: 1.2rem;
+  color: #555555;
+}
+
+#login-area p {
+  margin-bottom: 25px;
+  font-size: 1.1rem;
+  color: #666666;
+  line-height: 1.6;
+}
+
+#login-area input {
+  margin: 10px 0;
+  padding: 14px 20px;
+  width: 100%;
+  max-width: 400px;
+  border: 2px solid var(--color-primary);
+  border-radius: 8px;
+  background: var(--color-white);
+  color: var(--color-text);
+  font-size: 1rem;
+  transition: border 0.3s ease;
+}
+
+#login-area input:focus {
+  border-color: var(--color-secondary);
+  outline: none;
+}
+
+#login-area button {
+  margin-top: 20px;
+  width: 100%;
+  max-width: 400px;
+  padding: 14px 20px;
+  background: var(--color-secondary);
+  color: var(--color-primary);
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+#login-area button:hover {
+  background: var(--color-accent);
+  transform: translateY(-2px);
+}
+
+/* Sezione App */
+#app-area {
+  display: none;
+  flex-direction: column;
+  width: 100%;
+}
+
+.fields-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  margin-top: 30px;
+}
+
+.field-box {
+  flex: 1 1 300px;
+  background: var(--color-white);
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.field-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+.field-box h3 {
+  color: var(--color-primary);
+  margin-bottom: 15px;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.slot-info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.slot {
+  padding: 10px 15px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-align: center;
+  transition: background 0.3s ease, transform 0.2s ease;
+  cursor: pointer;
+}
+
+.available {
+  background-color: #FFF3E0; /* Giallo chiaro */
+  color: var(--color-primary);
+  border: 2px solid var(--color-primary);
+}
+
+.available:hover {
+  background-color: var(--color-secondary);
+  color: var(--color-white);
+  transform: scale(1.05);
+}
+
+.unavailable {
+  background-color: #FFCCBC; /* Arancione chiaro */
+  color: #FF5722; /* Arancione scuro */
+  border: 2px solid #FF5722;
+  cursor: not-allowed;
+}
+
+.my-booking {
+  background-color: #FFF9C4; /* Giallo pallido */
+  color: var(--color-primary);
+  border: 2px solid var(--color-primary);
+}
+
+.my-booking:hover {
+  background-color: var(--color-secondary);
+  color: var(--color-white);
+  transform: scale(1.05);
+}
+
+.cancel-btn {
+  margin-top: 15px;
+  background: #FF5252;
+  color: #FFFFFF;
+  padding: 8px 12px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.cancel-btn:hover {
+  background: #FF1744;
+  transform: translateY(-2px);
+}
+
+/* Sezione Admin */
+.admin {
+  display: none;
+  margin-top: 40px;
+  background: var(--color-white);
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.admin:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+.admin h2 {
+  color: var(--color-primary);
+  margin-bottom: 20px;
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+table, th, td {
+  border: 1px solid #EEEEEE;
+}
+
+th, td {
+  padding: 12px;
+  text-align: left;
+  font-size: 1rem;
+}
+
+th {
+  background-color: var(--color-secondary);
+  color: var(--color-primary);
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #FFFDE7; /* Giallo molto chiaro */
+}
+
+tbody tr:hover {
+  background-color: #FFF9C4; /* Giallo pallido */
+}
+
+button {
+  padding: 6px 10px;
+  background: var(--color-secondary);
+  color: var(--color-primary);
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+  background: var(--color-accent);
+  transform: translateY(-2px);
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  background: var(--color-primary);
+  color: var(--color-white);
+  padding: 15px;
+  margin-top: auto;
+  box-shadow: 0 -2px 5px rgba(0,0,0,0.1);
+}
+
+footer p {
+  font-size: 1rem;
+}
+
+/* Contenitore per le Notifiche */
+#notification-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1001;
+}
+
+.notification {
+  background-color: var(--color-secondary);
+  color: var(--color-primary);
+  padding: 15px 20px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+@keyframes fadein {
+  from { opacity: 0; right: 0; }
+  to { opacity: 1; right: 20px; }
+}
+
+@keyframes fadeout {
+  from { opacity: 1; right: 20px; }
+  to { opacity: 0; right: 0; }
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  main {
+    padding: 30px 15px;
+  }
+
+  .fields-container {
+    gap: 20px;
+  }
+
+  .field-box h3 {
+    font-size: 1.3rem;
+  }
+
+  .admin h2 {
+    font-size: 1.8rem;
+  }
+
+  table, th, td {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 768px) {
+  header h1 {
+    font-size: 2rem;
+  }
+
+  #login-area h1 {
+    font-size: 2rem;
+  }
+
+  .fields-container {
+    flex-direction: column;
+    gap: 25px;
+  }
+
+  .field-box {
+    width: 100%;
+  }
+
+  .slot-info {
+    flex-direction: column;
+  }
+
+  .slot {
+    width: 100%;
+  }
+
+  .logout {
+    position: static;
+    margin: 10px 0;
+  }
+
+  .admin h2 {
+    font-size: 1.6rem;
+  }
+
+  table, th, td {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  #login-area {
+    padding: 30px 20px;
+  }
+
+  #login-area h1 {
+    font-size: 1.8rem;
+  }
+
+  #login-area input, #login-area button {
+    max-width: 100%;
+  }
+
+  header h1 {
+    font-size: 1.8rem;
+  }
+
+  footer p {
+    font-size: 0.9rem;
+  }
+}
