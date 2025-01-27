@@ -1,0 +1,362 @@
+/* Reset di base */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Import del font Poppins */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+/* Variabili CSS (colori “estivi”) */
+:root {
+  --color-primary: #ff6f61;   /* Rosso corallo */
+  --color-secondary: #ffd166; /* Giallo tenue */
+  --color-accent: #ffa580;    /* Arancione chiaro */
+  --color-bg-gradient: linear-gradient(120deg, #ffd166, #ff6f61, #ef5350);
+  --color-bg-card: #ffffff;   /* Bianco per i box */
+  --color-text: #333333;      /* Grigio scuro */
+  --color-white: #ffffff;
+  --color-overlay: rgba(255, 255, 255, 0.15);
+}
+
+/* Animazioni */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInTop {
+  from {
+    transform: translateY(-100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+@keyframes gradientBG {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Stile Body */
+body {
+  font-family: 'Poppins', sans-serif;
+  background: var(--color-bg-gradient);
+  background-size: 200% 200%;
+  animation: gradientBG 10s ease infinite; /* Anima il gradiente sullo sfondo */
+  color: var(--color-text);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  transition: background 0.3s ease;
+}
+
+/* Header */
+header {
+  background: var(--color-primary);
+  color: var(--color-white);
+  text-align: center;
+  padding: 20px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.15);
+  animation: slideInTop 0.5s ease-out;
+}
+
+header h1 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  animation: fadeIn 1s ease-out;
+}
+
+.logout {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  text-decoration: none;
+  color: var(--color-white);
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.logout:hover {
+  color: var(--color-accent);
+}
+
+/* Sezione Login */
+#login-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.85);
+  margin: 40px auto;
+  padding: 40px 30px;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 400px;
+  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+  animation: fadeIn 0.8s ease-out;
+}
+
+#login-area h1 {
+  margin-bottom: 15px;
+  color: var(--color-primary);
+  font-weight: 700;
+}
+
+#login-area p {
+  margin-bottom: 20px;
+  color: #555;
+}
+
+#login-area input {
+  display: block;
+  width: 80%;
+  margin: 10px auto;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 2px solid var(--color-accent);
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+#login-area input:focus {
+  border-color: var(--color-primary);
+}
+
+#login-area button {
+  background: var(--color-primary);
+  border: none;
+  color: var(--color-white);
+  padding: 12px 18px;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+#login-area button:hover {
+  background: var(--color-accent);
+  transform: scale(1.05);
+}
+
+/* Sezione App */
+#app-area {
+  display: none; /* di base nascosto finché non si fa login */
+  flex-direction: column;
+  width: 100%;
+  animation: fadeIn 0.5s ease-out;
+}
+
+.fields-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  margin: 30px auto;
+  padding: 0 20px;
+  max-width: 1200px;
+}
+
+.field-box {
+  flex: 1 1 300px;
+  background: var(--color-bg-card);
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: fadeIn 0.6s ease;
+}
+
+.field-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+.field-box h3 {
+  margin-bottom: 15px;
+  color: var(--color-primary);
+}
+
+/* Slot (griglia responsive) */
+.slot-info {
+  display: grid;
+  grid-template-columns: 1fr;
+  row-gap: 10px;
+}
+
+@media (min-width: 576px) {
+  .slot-info {
+    grid-template-columns: 1fr 1fr;
+    column-gap: 10px;
+  }
+}
+@media (min-width: 768px) {
+  .slot-info {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+.slot {
+  padding: 10px 15px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-align: center;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+  user-select: none;
+}
+
+/* Disponibile */
+.available {
+  background-color: #ffe6cc; 
+  color: #d35400;            
+  border: 2px solid #d35400;
+}
+
+.available:hover {
+  background-color: #d35400;
+  color: var(--color-white);
+  transform: scale(1.05);
+}
+
+/* Non Disponibile */
+.unavailable {
+  background-color: #ffccbc; 
+  color: #ff5722;            
+  border: 2px solid #ff5722;
+  cursor: not-allowed;
+}
+
+/* Prenotazione Utente Corrente */
+.my-booking {
+  background-color: #fff9c4; /* Giallo pallido */
+  color: var(--color-primary);
+  border: 2px solid var(--color-primary);
+}
+
+.my-booking:hover {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  transform: scale(1.05);
+}
+
+/* Sezione Admin */
+.admin {
+  display: none;
+  margin: 40px auto;
+  background: var(--color-bg-card);
+  padding: 25px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: fadeIn 0.5s ease-out;
+  max-width: 1200px;
+}
+
+.admin:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+.admin h2 {
+  margin-bottom: 15px;
+  color: var(--color-primary);
+}
+
+/* Tabelle Admin */
+.admin table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 30px;
+}
+
+.admin table thead {
+  background-color: var(--color-primary);
+  color: #fff;
+}
+
+.admin table th,
+.admin table td {
+  padding: 10px;
+  text-align: center;
+  border: 1px solid #ddd;
+  font-size: 0.95rem;
+}
+
+.admin table tbody tr:hover {
+  background-color: var(--color-overlay);
+}
+
+.admin table button {
+  background: none;
+  border: none;
+  color: #e74c3c;
+  cursor: pointer;
+  font-weight: 600;
+  transition: color 0.3s ease;
+}
+
+.admin table button:hover {
+  color: #ff5722;
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  background: var(--color-primary);
+  color: var(--color-white);
+  padding: 15px;
+  margin-top: auto;
+  box-shadow: 0 -2px 5px rgba(0,0,0,0.15);
+}
+
+footer p {
+  font-size: 1rem;
+}
+
+/* Contenitore Notifiche */
+#notification-container {
+  position: fixed;
+  top: 70px;
+  right: 20px;
+  width: 300px;
+  z-index: 9999;
+}
+
+.notification {
+  background: #ffffff;
+  color: #333;
+  border-left: 5px solid var(--color-primary);
+  padding: 10px 15px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  animation: fadeIn 0.5s ease forwards;
+}
+
+.notification:not(:last-child) {
+  margin-bottom: 10px;
+}

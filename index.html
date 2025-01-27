@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Prenotazione Campi</title>
+
+  <!-- FontAwesome per le icone -->
+  <link rel="stylesheet" 
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" 
+        integrity="sha512-pI3F2K73oUjM3yoAGlwE2Y6dc+ZNJMfLyXQThOqNpqKgUyfnBVFdQF6Kl9gWQheCH1E2V0GadNkm+jGdA1oAkg==" 
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+  
+  <!-- Foglio di stile -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Sezione Login -->
+  <div id="login-area">
+    <h1>Benvenuto</h1>
+    <div class="tommi">Ciao da Tommi38</div>
+    <p>
+      Inserisci le tue credenziali per prenotare uno dei nostri campi.<br/>
+      Puoi prenotare <strong>un solo slot di 45 minuti</strong> al giorno (dalle 11:00 alle 21:00).<br/>
+      Puoi cancellare solo la tua prenotazione.
+    </p>
+    <input type="text" id="username" placeholder="Username" aria-label="Username">
+    <input type="password" id="password" placeholder="Password" aria-label="Password">
+    <button onclick="login()"><i class="fas fa-sign-in-alt"></i> Accedi</button>
+  </div>
+
+  <!-- Sezione Applicazione -->
+  <div id="app-area">
+    <header>
+      <a href="#" class="logout" onclick="logout()">
+        <i class="fas fa-sign-out-alt"></i> Logout
+      </a>
+      <h1>Prenotazione Campi</h1>
+    </header>
+    <main>
+      <div class="fields-container">
+        <div class="field-box">
+          <h3>Volley1</h3>
+          <div class="slot-info" id="slots-Volley1"></div>
+        </div>
+        <div class="field-box">
+          <h3>Volley2</h3>
+          <div class="slot-info" id="slots-Volley2"></div>
+        </div>
+        <div class="field-box">
+          <h3>Basket/Calcio</h3>
+          <div class="slot-info" id="slots-BasketCalcio"></div>
+        </div>
+        <div class="field-box">
+          <h3>Ping-pong</h3>
+          <div class="slot-info" id="slots-Ping-pong"></div>
+        </div>
+      </div>
+
+      <!-- Sezione Admin -->
+      <div class="admin" id="admin-area">
+        <h2>Gestione Prenotazioni (Amministratore)</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Campo</th>
+              <th>Data</th>
+              <th>Orario</th>
+              <th>Utente</th>
+              <th>Azioni</th>
+            </tr>
+          </thead>
+          <tbody id="admin-table"></tbody>
+        </table>
+
+  <!-- AGGIUNGI QUESTO PULSANTE -->
+  <button id="create-all-users-btn" onclick="handleCreateAllUsers()">
+    <i class="fas fa-user-plus"></i> Crea Tutti i 200 Utenti
+  </button>
+</div>
+
+        <h2>Gestione Utenti</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Username</th>
+              <th>Password</th>
+              <th>Stato</th>
+              <th>Azioni</th>
+            </tr>
+          </thead>
+          <tbody id="credentials-table"></tbody>
+        </table>
+      </div>
+    </main>
+
+    <footer>
+      <p>© 2025 Prenotazione Campi - Tutti i diritti riservati</p>
+    </footer>
+  </div>
+
+  <!-- Contenitore per le Notifiche -->
+  <div id="notification-container"></div>
+
+  <!-- Firebase 8.x Scripts (dopo il contenuto) -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+
+  <!-- Il tuo script personalizzato (dopo tutto l'HTML) -->
+  <script src="script.js"></script>
+</body>
+</html>
+
